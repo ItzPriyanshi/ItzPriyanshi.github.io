@@ -1,3 +1,4 @@
+// Function to handle the theme toggle and background image change
 document.getElementById('theme-toggle').addEventListener('click', () => {
     const backgroundImages = [
         'https://i.imgur.com/XfAq4Ep.jpeg',
