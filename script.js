@@ -1,39 +1,33 @@
-// Theme Toggle Functionality
-const themeToggle = document.getElementById('theme-toggle');
-const body = document.body;
+document.getElementById('theme-toggle').addEventListener('click', () => {
+    const backgroundImages = [
+        'https://i.imgur.com/XfAq4Ep.jpeg',
+        'https://i.imgur.com/g8UYq7S.jpeg',
+        'https://i.imgur.com/f4H9unz.jpeg',
+        'https://i.imgur.com/ChKuPl1.jpeg'
+    ];
 
-// Set the initial state based on the current theme
-function updateToggleIcon() {
-  if (body.classList.contains('dark-mode')) {
-    themeToggle.innerHTML = '<span class="icon">☀️</span>';
-    themeToggle.classList.remove('moon');
-    themeToggle.classList.add('sun');
-  } else {
-    themeToggle.innerHTML = '<span class="icon">🌙</span>';
-    themeToggle.classList.remove('sun');
-    themeToggle.classList.add('moon');
-  }
-}
+    // Get current background image
+    const currentImage = document.body.style.backgroundImage;
 
-// Initialize the toggle icon when the page loads
-updateToggleIcon();
+    // Find the index of the current image in the array
+    let currentIndex = backgroundImages.indexOf(currentImage.replace(/url\(["']?|["']?\)$/g, ''));
 
-themeToggle.addEventListener('click', () => {
-  body.classList.toggle('dark-mode');
-  updateToggleIcon();
+    // Set the next image, looping back to the start if necessary
+    const nextIndex = (currentIndex + 1) % backgroundImages.length;
+    document.body.style.backgroundImage = `url(${backgroundImages[nextIndex]})`;
 });
 
 // Show About Box
 document.getElementById('about-link').addEventListener('click', (event) => {
-  event.preventDefault();
-  document.getElementById('about-box').classList.add('show');
-  document.getElementById('about-box').setAttribute('aria-hidden', 'false');
+    event.preventDefault();
+    document.getElementById('about-box').classList.add('show');
+    document.getElementById('about-box').setAttribute('aria-hidden', 'false');
 });
 
 // Close About Box
 document.getElementById('close-about').addEventListener('click', () => {
-  document.getElementById('about-box').classList.remove('show');
-  document.getElementById('about-box').setAttribute('aria-hidden', 'true');
+    document.getElementById('about-box').classList.remove('show');
+    document.getElementById('about-box').setAttribute('aria-hidden', 'true');
 });
 
 // Hide/Show Navigator on Scroll
@@ -41,7 +35,7 @@ let lastScrollTop = 0;
 const navbar = document.getElementById('navigator');
 
 window.addEventListener('scroll', () => {
-  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-  navbar.style.top = (scrollTop > lastScrollTop) ? '-60px' : '0';
-  lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    navbar.style.top = (scrollTop > lastScrollTop) ? '-60px' : '0';
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
 });
