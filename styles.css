@@ -122,6 +122,11 @@ body {
     background-color: #2980b9;
 }
 
+.form-response {
+    margin-top: 10px;
+    font-size: 16px;
+}
+
 /* Theme Toggle Button */
 .theme-toggle {
     position: fixed;
