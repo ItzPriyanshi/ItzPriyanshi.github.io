@@ -14,8 +14,6 @@
     <input type="text" id="search-bar" placeholder="Search commands..." class="search-bar" aria-label="Search commands" />
   </nav>
 
-  <button class="theme-toggle" id="theme-toggle">🌙</button>
-
   <section class="about-box" id="about-box" aria-hidden="true">
     <button class="close-btn" id="close-about" aria-label="Close about section">&times;</button>
     <h2>About</h2>
@@ -27,25 +25,15 @@
     </ul>
   </section>
 
-  <section class="category" data-description="Gemini related commands">
-    <h3>Gemini</h3>
-    <ul>
-      <li><a href="#" class="link">Link1</a>: Description of Gemini Link1</li>
-      <li><a href="#" class="link">Link2</a>: Description of Gemini Link2</li>
-      <li><a href="#" class="link">Link3</a>: Description of Gemini Link3</li>
-      <li><a href="#" class="link">Get API Key</a></li>
-    </ul>
-  </section>
-
-  <!-- Updated Contact Section -->
+  <!-- Example Contact Section -->
   <section class="contact">
     <h2>Contact Us</h2>
-    <form>
+    <form action="https://formspree.io/f/your-form-id" method="POST">
       <label for="name">Name</label>
       <input type="text" id="name" name="name" placeholder="Your Name" required>
 
       <label for="email">Email</label>
-      <input type="email" id="email" name="email" placeholder="Your Email" value="priyanshikaurji@gmail.com" required>
+      <input type="email" id="email" name="email" placeholder="Your Email" required>
 
       <label for="message">Message</label>
       <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
@@ -54,7 +42,9 @@
     </form>
   </section>
 
-  <script src="script.js"></script>
+  <button class="theme-toggle" id="theme-toggle"></button>
+
+  <script src="scripts.js"></script>
 </body>
 
 </html>
