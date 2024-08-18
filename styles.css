@@ -1,7 +1,9 @@
+/* Base Styling */
 body {
     background-image: url('https://i.imgur.com/XfAq4Ep.jpeg');
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
     transition: background-image 0.5s ease-in-out;
     color: #333;
     font-family: 'Courier New', Courier, monospace;
@@ -9,19 +11,118 @@ body {
     padding-top: 60px;
 }
 
+/* Navigation */
 .navigator {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(0, 0, 255, 0.5); /* Transparent blue */
     padding: 10px 20px;
     position: fixed;
     width: 100%;
     top: 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     z-index: 10;
 }
 
+.nav-link, .link {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.nav-link:hover, .link:hover {
+    color: #ddd;
+}
+
+/* Search Bar */
+.search-bar {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 16px;
+    width: 200px;
+    transition: border-color 0.3s;
+}
+
+.search-bar:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+/* Category Box */
+.category {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 800px;
+}
+
+.category h3 {
+    margin-top: 0;
+}
+
+.category a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.category a:hover {
+    text-decoration: underline;
+}
+
+/* Contact Box */
+.contact {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 800px;
+}
+
+.contact h2 {
+    margin-top: 0;
+}
+
+.contact form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact label {
+    margin: 5px 0;
+}
+
+.contact input, .contact textarea {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.contact button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.contact button:hover {
+    background-color: #2980b9;
+}
+
+/* Theme Toggle Button */
 .theme-toggle {
     position: fixed;
     bottom: 20px;
@@ -43,13 +144,14 @@ body {
     transform: scale(1.1);
 }
 
+/* About Box */
 .about-box {
     display: none;
     position: fixed;
     top: 20%;
     left: 50%;
     transform: translate(-50%, -20%);
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent */
     color: #333;
     padding: 20px;
     border-radius: 10px;
@@ -71,5 +173,3 @@ body {
         opacity: 1;
     }
 }
-
-/* Add additional styling if needed */
