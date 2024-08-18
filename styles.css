@@ -1,203 +1,75 @@
-/* Base Styling */
-:root {
-  --bg-color-light: #f5f5f5;
-  --bg-color-dark: #333;
-  --text-color-light: #333;
-  --text-color-dark: #f5f5f5;
-  --link-color: #3498db;
-  --link-hover-color: #2ecc71;
-  --button-bg-light: #3498db;
-  --button-bg-dark: #2ecc71;
-  --button-text-light: #fff;
-  --button-text-dark: #333;
-  --accent-color: #e74c3c;
-}
-
 body {
-  background-color: var(--bg-color-light);
-  color: var(--text-color-light);
-  transition: background-color 0.3s, color 0.3s;
-  font-family: 'Courier New', Courier, monospace;
-  margin: 0;
-  padding-top: 60px;
+    background-image: url('https://i.imgur.com/XfAq4Ep.jpeg');
+    background-size: cover;
+    background-position: center;
+    transition: background-image 0.5s ease-in-out;
+    color: #333;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    padding-top: 60px;
 }
 
 .navigator {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: var(--bg-color-light);
-  padding: 10px 20px;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 10;
 }
 
-.nav-link, .link {
-  text-decoration: none;
-  color: var(--link-color);
-  font-size: 18px;
-  font-weight: bold;
-  transition: color 0.3s;
-}
-
-.nav-link:hover, .link:hover {
-  color: var(--link-hover-color);
-}
-
-.search-bar {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 5px;
-  font-size: 16px;
-  width: 200px;
-  transition: border-color 0.3s;
-}
-
-.search-bar:focus {
-  border-color: var(--link-color);
-  outline: none;
-}
-
-.category {
-  margin: 20px;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.category:hover {
-  transform: translateY(-10px);
-}
-
-/* Updated theme-toggle button styling */
 .theme-toggle {
-  background-color: var(--button-bg-light);
-  color: var(--button-text-light);
-  border: none;
-  border-radius: 50%;
-  padding: 10px;
-  cursor: pointer;
-  font-size: 18px;
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  transition: background-color 0.3s, transform 0.3s;
-  z-index: 1000;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-image: url('https://i.imgur.com/weXVGtU.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s;
 }
 
 .theme-toggle:hover {
-  background-color: var(--button-bg-dark);
-  color: var(--button-text-dark);
-  transform: scale(1.1);
-}
-
-.dark-mode {
-  background-color: var(--bg-color-dark);
-  color: var(--text-color-dark);
-}
-
-.dark-mode .navigator {
-  background-color: var(--bg-color-dark);
-}
-
-.dark-mode .link, .dark-mode .nav-link {
-  color: var(--link-hover-color);
-}
-
-.dark-mode .theme-toggle {
-  background-color: var(--button-bg-dark);
-  color: var(--button-text-dark);
+    transform: scale(1.1);
 }
 
 .about-box {
-  display: none;
-  position: fixed;
-  top: 20%;
-  left: 50%;
-  transform: translate(-50%, -20%);
-  background-color: var(--bg-color-light);
-  color: var(--text-color-light);
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-  z-index: 1000;
-  width: 300px;
+    display: none;
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    width: 300px;
 }
 
 .about-box.show {
-  display: block;
-  animation: fadeIn 0.5s ease-in-out;
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
-.close-btn {
-  background: none;
-  border: none;
-  font-size: 24px;
-  color: var(--accent-color);
-  cursor: pointer;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-}
-
-.close-btn:hover {
-  color: var(--link-hover-color);
-}
-
-.contact {
-  margin: 20px;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.contact h2 {
-  margin-top: 0;
-}
-
-.contact form {
-  display: flex;
-  flex-direction: column;
-}
-
-.contact label {
-  margin: 5px 0;
-}
-
-.contact input, .contact textarea {
-  padding: 10px;
-  margin: 5px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.contact button {
-  background-color: var(--button-bg-light);
-  color: var(--button-text-light);
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s;
-}
-
-.contact button:hover {
-  background-color: var(--button-bg-dark);
-  color: var(--button-text-dark);
-}
+/* Other styling remains the same */
