@@ -1,4 +1,3 @@
-// Function to handle the theme toggle and background image change
 document.getElementById('theme-toggle').addEventListener('click', () => {
     const backgroundImages = [
         'https://i.imgur.com/XfAq4Ep.jpeg',
@@ -42,4 +41,27 @@ window.addEventListener('scroll', () => {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     navbar.style.top = (scrollTop > lastScrollTop) ? '-60px' : '0';
     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+});
+
+// AJAX form submission
+document.getElementById('contact-form').addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+
+    fetch('https://formspree.io/f/your-form-id', {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'Accept': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(result => {
+        document.getElementById('form-response').innerText = 'Message sent successfully!';
+        event.target.reset();
+    })
+    .catch(error => {
+        document.getElementById('form-response').innerText = 'An error occurred. Please try again.';
+    });
 });
