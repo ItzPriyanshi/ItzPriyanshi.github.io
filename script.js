@@ -9,8 +9,11 @@ document.getElementById('theme-toggle').addEventListener('click', () => {
     // Get current background image
     const currentImage = document.body.style.backgroundImage;
 
+    // Remove the 'url("...")' part to compare
+    const cleanedCurrentImage = currentImage.replace(/url\(["']?|["']?\)$/g, '');
+
     // Find the index of the current image in the array
-    let currentIndex = backgroundImages.indexOf(currentImage.replace(/url\(["']?|["']?\)$/g, ''));
+    let currentIndex = backgroundImages.indexOf(cleanedCurrentImage);
 
     // Set the next image, looping back to the start if necessary
     const nextIndex = (currentIndex + 1) % backgroundImages.length;
