@@ -1,60 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- design inspired by https://www.authkit.com/ -->
+<div class="header">
+  <h2><a href="https://codepen.io/RAFA3L" target="_blank" rel="noopener noreferrer">RAFA</a></h2>
+  <div class="mid-spot" onclick="document.body.classList.toggle('gold');"></div>
+  <button class="contact-btn">
+    <span class="glow"></span>
+    <span class="contact-btn-content">Contact Us</span>
+  </button>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Command Categories</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
+  <div class="spotlight">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
 
-<body>
-    <nav class="navigator" id="navigator">
-        <a href="#" class="nav-link" id="about-link">[!] About</a>
-        <input type="text" id="search-bar" placeholder="Search commands..." class="search-bar" aria-label="Search commands" />
-    </nav>
+<canvas id="particleCanvas"></canvas>
 
-    <section class="about-box" id="about-box" aria-hidden="true">
-        <button class="close-btn" id="close-about" aria-label="Close about section">&times;</button>
-        <h2>About</h2>
-        <p>This guide was created by **VM/AM**. It is designed to help you navigate various commands in a stylish and interactive manner. Enjoy exploring!</p>
-        <ul>
-            <li><strong>Discord:</strong> <a href="https://discord.com/invite/NTTXKCuv" target="_blank">cherry_yuki0</a></li>
-            <li><strong>Facebook:</strong> <a href="https://facebook.com/vmam69" target="_blank">VM/AM</a></li>
-            <li><strong>YouTube:</strong> <a href="https://youtube.com/@theanonlyricist" target="_blank">The Anon Lyricist</a></li>
-        </ul>
-    </section>
+<div class="accent-lines">
+  <div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
+<div class="heroSubP">
+  <p>Introducing</p>
+</div>
+<div class="hero">
+  <div class="heroT">
+    <h2>Eclipx</h2>
+    <h2>Eclipx</h2>
+  </div>
+</div>
+<p class="heroP">The world's best platform, <br>
+  powered by EclipxOS + React.</p>
+<div class="mountains">
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+<div class="hero-spacer"></div>
 
-    <section class="category" data-description="Gemini related commands">
-        <h3>Gemini</h3>
-        <ul>
-            <li><a href="#" class="link">Link1</a>: Description of Gemini Link1</li>
-            <li><a href="#" class="link">Link2</a>: Description of Gemini Link2</li>
-            <li><a href="#" class="link">Link3</a>: Description of Gemini Link3</li>
-            <li><a href="#" class="link">Get API Key</a></li>
-        </ul>
-    </section>
-
-    <section class="contact">
-        <h2>Contact Us</h2>
-        <form id="contact-form">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Your Name" required>
-
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Your Email" required>
-
-            <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
-
-            <button type="submit">Send Message</button>
-        </form>
-        <div id="form-response" class="form-response"></div>
-    </section>
-
-    <button class="theme-toggle" id="theme-toggle"></button>
-
-    <script src="scripts.js"></script>
-</body>
-
-</html>
+<div class="content-section">
+  <div class="content-acc">
+    <div></div>
+    <div></div>
+  </div>
+  <p class="subt">Revolutionary by design</p>
+  <h3 class="title">Harness. Empower.<br>
+    Unmatched Versatility.</h3>
+  <p class="subp">At the core lies our revolutionary framework, <br>ensuring adaptability across all application architectures.</p>
+</div>
