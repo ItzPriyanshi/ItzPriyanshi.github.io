@@ -1,67 +1,84 @@
-document.getElementById('theme-toggle').addEventListener('click', () => {
-    const backgroundImages = [
-        'https://i.imgur.com/XfAq4Ep.jpeg',
-        'https://i.imgur.com/g8UYq7S.jpeg',
-        'https://i.imgur.com/f4H9unz.jpeg',
-        'https://i.imgur.com/ChKuPl1.jpeg'
-    ];
+const canvas = document.getElementById('particleCanvas');
+const ctx = canvas.getContext('2d');
 
-    // Get current background image
-    const currentImage = document.body.style.backgroundImage;
+// Initial canvas size
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-    // Remove the 'url("...")' part to compare
-    const cleanedCurrentImage = currentImage.replace(/url\(["']?|["']?\)$/g, '');
+let particles = [];
+let particleCount = calculateParticleCount();
 
-    // Find the index of the current image in the array
-    let currentIndex = backgroundImages.indexOf(cleanedCurrentImage);
+class Particle {
+    constructor() {
+        this.reset();
+        this.y = Math.random() * canvas.height;
+        this.fadeDelay = Math.random() * 600 + 100;
+        this.fadeStart = Date.now() + this.fadeDelay;
+        this.fadingOut = false;
+    }
 
-    // Set the next image, looping back to the start if necessary
-    const nextIndex = (currentIndex + 1) % backgroundImages.length;
-    document.body.style.backgroundImage = `url(${backgroundImages[nextIndex]})`;
-});
+    reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.speed = Math.random() / 5 + 0.1;
+        this.opacity = 1;
+        this.fadeDelay = Math.random() * 600 + 100;
+        this.fadeStart = Date.now() + this.fadeDelay;
+        this.fadingOut = false;
+    }
 
-// Show About Box
-document.getElementById('about-link').addEventListener('click', (event) => {
-    event.preventDefault();
-    document.getElementById('about-box').classList.add('show');
-    document.getElementById('about-box').setAttribute('aria-hidden', 'false');
-});
-
-// Close About Box
-document.getElementById('close-about').addEventListener('click', () => {
-    document.getElementById('about-box').classList.remove('show');
-    document.getElementById('about-box').setAttribute('aria-hidden', 'true');
-});
-
-// Hide/Show Navigator on Scroll
-let lastScrollTop = 0;
-const navbar = document.getElementById('navigator');
-
-window.addEventListener('scroll', () => {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    navbar.style.top = (scrollTop > lastScrollTop) ? '-60px' : '0';
-    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-});
-
-// AJAX form submission
-document.getElementById('contact-form').addEventListener('submit', (event) => {
-    event.preventDefault();
-
-    const formData = new FormData(event.target);
-
-    fetch('https://formspree.io/f/your-form-id', {
-        method: 'POST',
-        body: formData,
-        headers: {
-            'Accept': 'application/json'
+    update() {
+        this.y -= this.speed;
+        if (this.y < 0) {
+            this.reset();
         }
-    })
-    .then(response => response.json())
-    .then(result => {
-        document.getElementById('form-response').innerText = 'Message sent successfully!';
-        event.target.reset();
-    })
-    .catch(error => {
-        document.getElementById('form-response').innerText = 'An error occurred. Please try again.';
+
+        if (!this.fadingOut && Date.now() > this.fadeStart) {
+            this.fadingOut = true;
+        }
+        
+        if (this.fadingOut) {
+            this.opacity -= 0.008;
+            if (this.opacity <= 0) {
+                this.reset();
+            }
+        }
+    }
+
+    draw() {
+        ctx.fillStyle = `rgba(${255 - (Math.random() * 255/2)}, 255, 255, ${this.opacity})`;
+        ctx.fillRect(this.x, this.y, 0.4, Math.random() * 2 + 1);
+    }
+}
+
+function initParticles() {
+    particles = [];
+    for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+    }
+}
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(particle => {
+        particle.update();
+        particle.draw();
     });
-});
+    requestAnimationFrame(animate);
+}
+
+function calculateParticleCount() {
+    return Math.floor((canvas.width * canvas.height) / 6000);
+}
+
+function onResize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    particleCount = calculateParticleCount();
+    initParticles();
+}
+
+window.addEventListener('resize', onResize);
+
+initParticles();
+animate();
